@@ -1,0 +1,100 @@
+<!-- <ion-header> -->
+  <!-- <ion-toolbar> -->
+    <!-- <ion-title>login</ion-title> -->
+  <!-- </ion-toolbar> -->
+<!-- </ion-header> -->
+<ion-content color="primary" class="cont-img-bg">
+    <div class="home-logo">
+		<div class="animatin">
+		    <span><img src="assets/img/kin-logo.png" alt=""></span>
+		</div>
+				
+	</div>
+
+	 	<div class="login">
+	 		
+		    <div class="log-sign-sec">
+		        <a routerLink="/login" href="javascript:void(0)">Login</a>
+		        <a class="active" href="javascript:void(0)">Signup</a>
+		    </div>
+		    <form [formGroup]="signupForm" >
+			<div form-group>
+			 	<ion-label>First Name</ion-label>
+		 		<ion-item lines="none"  >
+				  <ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+				  <ion-input type="text"  placeholder="Enter First Name" formControlName="fname"></ion-input>
+				</ion-item>
+			</div>
+			<div form-group>
+			 	<ion-label>Last Name</ion-label>
+		 		<ion-item lines="none"  >
+			  		<ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+			  		<ion-input type="text" formControlName="lname" placeholder="Enter Last Name"></ion-input>
+				</ion-item>
+			</div>
+
+			<div form-group>
+		 		<ion-label>Email</ion-label>
+			 	<ion-item lines="none"  >
+			  		<ion-label><ion-icon name="mail-outline"></ion-icon></ion-label>
+			  		<ion-input type="email" formControlName="email" placeholder="Enter Email"></ion-input>
+				</ion-item>
+			</div>
+
+			<div form-group>
+		 		<ion-label>Contact</ion-label>
+			 	<ion-item lines="none"  >
+			  		<ion-label><ion-icon name="call-outline"></ion-icon></ion-label>
+			  		<ion-input type="tel" formControlName="contact" placeholder="Enter Contact Number"></ion-input>
+				</ion-item>
+			</div>
+
+			<div form-group>
+				<ion-label>Password</ion-label>
+			 	<ion-item lines="none">
+			  		<ion-label><ion-icon name="lock-closed-outline"></ion-icon></ion-label>
+			  		<ion-input type="password" formControlName="password" placeholder="Enter Password"></ion-input>
+				</ion-item>
+			</div>
+
+			<div form-group>
+				<ion-label>Confirm Password</ion-label>
+			 	<ion-item lines="none">
+			  		<ion-label><ion-icon name="lock-closed-outline"></ion-icon></ion-label>
+			  		<ion-input type="password" formControlName="cpassword" placeholder="Enter Confirm Password"></ion-input>
+				</ion-item>
+			</div>
+
+			<div form-group>
+				<ion-label>Gender</ion-label>
+				<div class="check-mark">
+					<label class="check-sec">
+					    <input type="radio" value="women" formControlName="gender" name="gender">
+					    <p class="abcd">Women</p>
+					</label>
+					<label class="check-sec">
+					    <input type="radio" name="radio" value="man" formControlName="gender" name="gender">
+					    <p class="abcd">Man</p>
+					</label>
+					<label class="check-sec">
+					    <input type="radio" name="radio" value="n/a" formControlName="gender" name="gender">
+					    <p class="abcd">N/A</p>
+					</label>
+				</div>
+			</div>
+
+			<!-- <ion-button  expand="full" shape="round" routerLink="/tabs/homenew"> -->
+			<ion-button  expand="full" shape="round" (click)="register()">
+				Create New Account
+			</ion-button>
+			</form>
+			<div class="social-btn"  style="visibility: hidden;">
+				<ion-button class="login-btn" color="secondary" shape="round" expand="full" (click)="doLogin()">
+					<ion-icon class="icn-circle facebook-clr fa fa-facebook"></ion-icon> <span>Signup With Facebook</span>
+				</ion-button>	
+				<ion-button class="login-btn" color="secondary" shape="round" expand="full" (click)="loginGoogle()">
+					<ion-icon class="icn-circle google-clr fa fa fa-google"></ion-icon> <span>Signup With Google</span>
+				</ion-button>
+			</div>
+	 	</div>
+</ion-content>

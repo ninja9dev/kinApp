@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Add New Contact</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<div class="call-mdl-sec">
+	<div class="call-cntr">
+		<div call-head>
+		    <span><ion-icon name="person"></ion-icon></span>
+		</div>
+
+		<form [formGroup]="signupForm" >
+			<div form-group>
+			 	<ion-label>User Name</ion-label>
+			 	<ion-item lines="none">
+			  		<ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+			  		<ion-input type="text"  placeholder="Enter Name" formControlName="name"></ion-input>
+				</ion-item>
+			</div> 
+
+			<div form-group>
+			 	<ion-label>User Phone No.</ion-label>
+			 	<ion-item lines="none">
+			  		<ion-label><ion-icon name="call"></ion-icon></ion-label>
+			  		<ion-input type="number" placeholder="Enter Phone Name" formControlName="phone"></ion-input>
+				</ion-item>
+			</div> 
+
+			<ion-button  expand="full" shape="round" (click)="addContact(name,phone)">Add Contact</ion-button>
+		</form>
+
+	</div>  
+</div>  
+</ion-content>

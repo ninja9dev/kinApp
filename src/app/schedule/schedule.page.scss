@@ -1,0 +1,166 @@
+ion-header
+{
+&:after
+{
+display:none;
+}
+ion-toolbar
+{
+--border-width:0!important
+
+}
+	ion-title
+	{
+		text-align: left;
+	}
+ion-buttons
+{
+font-size:20px;
+		ion-back-button
+		{
+			font-size:12px;
+		}
+}
+[mar-10]
+{
+margin-right:10px;
+}
+}
+
+ion-content
+{
+
+
+[calendar-head]
+{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+h2 {
+   margin-top: 8px;
+   font-size: 18px;
+   margin-bottom: 8px;
+}
+[btn-right]
+{
+ button {
+    border: 1px solid var(--ion-color-primary);
+    width: 27px;
+    display: inline-block;
+    height: 27px;
+    text-decoration: none;
+	outline: 0px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 13px;
+	background: var(--ion-color-secondary);
+}
+[mnth-btn]
+{
+border-radius:5px 0px 0px 5px;
+    margin-right: -1px;
+}
+[day-btn]
+{
+border-radius:0px 5px 5px 0px;
+    margin-left: -1px;
+}
+}
+[vew-mnth] 
+{
+    border: 1px solid #c2c2c2;
+    padding: 6px 15px;
+    font-size: 14px!important;
+    color: #555;
+	border-radius:25px;
+	background: var(--ion-color-secondary);
+}
+}
+
+
+.scdule-cont
+{
+    margin-top: 20px;
+	h1
+	{
+		font-size: 16px;
+		border-left: 3px solid var(--ion-color-primary);
+		padding-left: 4px;
+		margin: 0px;
+	}
+	ion-item-sliding
+	{
+		border: 1px solid var(--ion-color-primary);
+		margin-top: 8px;
+		border-radius: 10px;
+ion-item-option {
+    text-transform: capitalize;
+    font-size: 14px;
+}		
+	ion-item 
+	{
+
+		ion-avatar 
+		{
+			width: 50px;
+			height: 50px;
+			border: 2px solid var(--ion-color-primary);
+		}
+		ion-label
+		{
+		padding-left:10px;
+
+		p
+		{
+			font-size: 12px;
+			font-weight: 500;
+			color: #9a9a9a;
+		}
+		.cldr-sec
+		{
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			p
+			{
+				font-size: 12px;
+				font-weight: 500;
+				color: #9a9a9a;
+				line-height: normal;
+				margin:0px;
+			}
+		h2
+		{
+			font-size: 15px;
+			font-weight: 500;
+			margin-top: 0px;
+			color: var(--ion-color-primary);
+		}		    
+		}
+
+		
+		}
+		
+		.view-sec
+            {	margin: 0;	
+				ion-button 
+				{
+					margin: 0px 2px;
+					height: auto;
+					font-size: 13px;
+					--padding-start: 12px;
+					--padding-end: 12px;
+					--padding-bottom: 7px;
+					--padding-top: 7px;
+					display: inline-block;
+					--box-shadow: none;
+					text-transform: capitalize;
+				}
+			
+			}		
+	} 
+	} 
+}
+
+}

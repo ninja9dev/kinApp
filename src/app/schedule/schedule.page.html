@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <!--ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/home2">
+	   </ion-back-button>
+    </ion-buttons-->
+    <ion-title>Schedule</ion-title>
+	 <ion-button mar-10 slot="end" color="secondary"  shape="round"  size="small" fill="outline" (click)="addCall()">
+	   <ion-icon name="add"></ion-icon>
+	   New
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+<div calendar-head>
+<h2 vew-mnth>{{viewTitle}} </h2>
+<div btn-right>
+
+<!-- <button mnth-btn (click)="abc()" >
+M
+</button>
+
+<button wek-btn (click)="abc2()">
+W
+</button>
+<button day-btn (click)="abc1()" >
+D
+</button> -->
+</div>
+</div>
+   <calendar [eventSource]="eventSource"
+       [calendarMode]="calendar.mode"
+       [currentDate]="calendar.currentDate"   
+       (onTitleChanged)="onViewTitleChanged($event)" 
+	   (onTimeSelected)="onTimeSelected($event)"
+       step="30" (ionChange)="selectedDate(calendar.currentDate)">
+   </calendar>
+
+<div class="scdule-cont">
+<h1>Call Details</h1>
+	   <ion-item-sliding lines="none" *ngFor="let item of listing;">
+    <ion-item-options side="end">
+      <ion-item-option color="primary" >Confirm</ion-item-option>
+      <ion-item-option color="secondary">Change</ion-item-option>
+    </ion-item-options>	   
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/user-dummy.jpg"/>
+	     </ion-avatar>	   
+		 <ion-label>
+
+		 <div class="cldr-sec">
+		 	<div pad-left style="width:55%;">
+				<h2>{{item?.contactName}}</h2>
+				<p>
+					{{item?.callDate | date: 'dd/MM/yyyy' }} <b>{{item?.callTime | date: 'H:mm' }}</b>
+
+					<!-- <countdown units="Year | Month | Days | Hours | Minutes | Seconds"  end="July 22, 2021"></countdown> -->
+				</p>
+
+
+				<!-- <span id='demo'> {{countdown(item?.callDate)}}</span> -->
+			</div>
+			<div pad-left style="float:right;width: 25%;">
+				<ion-buttons slot="end" style='float:right;' (click)="calling(item)">
+			      	<!-- <span  *ngIf="!startVideo" style='float:right;'>
+			        	<ion-icon (click)="call(item)" name="call" style='margin:2px 9px 0px 4px;'></ion-icon>
+			      	</span> -->
+			      	<span style='float:right;'>
+			        	<ion-icon name="call" style='margin:2px 9px 0px 4px;'></ion-icon>
+			      	</span>
+			    </ion-buttons>
+			</div>
+			 
+		 </div>		 
+		 <!-- <p>Room No 12</p> -->
+
+		 </ion-label>
+		 
+	   	</ion-item> 
+	   	</ion-item-sliding> 
+	   	<ion-row *ngIf="listing?.length == 0" style="text-align: center;width: 100%;display: inline-block;padding: 23px 0;background: #f3f3f3;">
+	   		No schedule for the this date.
+	   	</ion-row>
+	</div>
+</ion-content>

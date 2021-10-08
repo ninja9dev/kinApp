@@ -1,0 +1,7 @@
+{
+  "name": "kin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

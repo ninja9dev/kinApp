@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Schedule New Call</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<div class="call-mdl-sec">
+<div class="call-cntr">
+<!-- <div call-head>
+  <h3>
+    <ion-icon name="person-circle-outline"></ion-icon> 
+    {{profile?.firstname}} {{profile?.lastname}}
+  </h3>
+</div> -->
+<form [formGroup]="signupForm">
+<div form-group>
+ <ion-label>Contacts</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="call-outline"></ion-icon></ion-label>
+  <ion-select  [interfaceOptions]="customAlertOptions" interface="alert" placeholder="Select Contacts" formControlName="contact">
+    <ion-select-option *ngFor="let item of contacts;" value='{{item._id}}'>
+      {{item.name}}
+    </ion-select-option>
+    <!-- <ion-select-option>David Smith</ion-select-option>
+    <ion-select-option>Johnson Charles</ion-select-option> -->
+  </ion-select>
+</ion-item>
+</div> 
+<div form-group>
+ <ion-label>Date</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="calendar-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="DD MM YYYY"  placeholder="D MM YYYY" formControlName="date"></ion-datetime>
+
+</ion-item>
+</div> 
+<div form-group> 
+ <ion-label>Time</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="time-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="HH:mm" placeholder="HH:MM" formControlName="time"></ion-datetime>
+</ion-item>
+</div>  
+<ion-button  expand="full" shape="round" (click)="addCall()">Add Call</ion-button>
+</form>
+</div>  
+</div>  
+</ion-content>

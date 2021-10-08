@@ -1,0 +1,59 @@
+ion-header
+{
+&:after
+{
+display:none;
+}
+ion-toolbar
+{
+--border-width:0!important
+
+}
+	ion-title
+	{
+		text-align: left;
+	}
+ion-buttons
+{
+font-size:20px;
+		ion-back-button
+		{
+			font-size:12px;
+		}
+}
+[mar-10]
+{
+margin-right:10px;
+}
+}
+
+ion-content
+{
+    --background: #f9f9f9;
+	 [calendar] {
+    background:var(--ion-color-secondary);
+       padding: 3px 12px 12px;
+[calendar-head]
+	{
+	display:flex;
+	justify-content:space-between;
+	h2 {
+    margin-top: 8px;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+	}
+	}
+
+ion-button
+		{
+			
+			font-weight: 600;
+			text-transform: capitalize;
+			    --box-shadow: none;
+    text-transform: Capitalize;
+    min-height: 45px;
+    width: calc(100% - 60px);
+    margin: 20px auto  0px;
+		}
+}

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Re-Schedule Call</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="call-mdl-sec">
+<div class="call-cntr">
+
+<div form-group>
+ <ion-label>Date</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="calendar-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="DD MM YYYY"  placeholder="D MM YYYY" [(ngModel)]="date"></ion-datetime>
+
+</ion-item>
+</div> 
+<div form-group> 
+ <ion-label>Time</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="time-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="HH:mm" placeholder="HH:MM" [(ngModel)]="time"></ion-datetime>
+</ion-item>
+</div>  
+<ion-button  expand="full" shape="round" (click)="addCall()">Submit</ion-button>
+<!-- </form> -->
+</div>  
+</div>  
+
+</ion-content>

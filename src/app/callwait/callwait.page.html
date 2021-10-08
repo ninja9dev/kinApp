@@ -1,0 +1,68 @@
+<!--ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Call</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header-->
+
+<ion-content color="primary">
+<div call-bg>
+    <div close-btn >
+	<ion-buttons slot="end" (click)="dismiss()" class=" ion-fixed">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+	</div>
+    <div call-centr>
+        <div class="home-logo">
+			<div class="animatin">
+			    <span><ion-icon name="videocam-sharp"></ion-icon></span>
+			</div>
+				
+		</div>
+		<div call-img>
+			<ion-avatar>
+				<img src="assets/img/user-dummy.jpg" alt=""/>
+			</ion-avatar>
+			<h2 *ngIf="callDetails?.contactUserId == userId">{{username}}</h2>
+			<h2 *ngIf="callDetails?.userId == userId">{{callDetails?.contactName}}</h2>
+
+			<!-- <p>04:32</p> -->
+		</div>
+<ion-list>
+  <div style="position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 7%;">
+    <!-- <ion-toggle ></ion-toggle>
+    <ion-label>Answer Asap</ion-label> -->
+    <ion-buttons slot="end" (click)="dismiss()" class="decline" *ngIf="callDetails?.contactUserId == userId">
+		<!-- <ion-icon name="close-outline"></ion-icon>  -->Decline
+	</ion-buttons>
+	<ion-buttons slot="end" (click)="accept()" class="ans" *ngIf="callDetails?.contactUserId == userId">
+	<!-- <ion-icon name="close-outline"></ion-icon> -->  Accept
+	</ion-buttons>
+	
+  </div>
+
+  <ion-buttons (click)="reschedule()" class="reschedule" *ngIf="callDetails?.contactUserId == userId">
+	<!-- <ion-icon name="close-outline"></ion-icon> --> Re-schedule
+	</ion-buttons>
+
+	<ion-buttons slot="end" (click)="dismiss()" class="reschedule" style="background: red;width: 30%;padding: 2% 8%;left: 35%;" *ngIf="callDetails?.userId == userId">
+	<!-- <ion-icon name="close-outline"></ion-icon> --> Decline
+	</ion-buttons>
+
+</ion-list>
+		<div volme-rng style="display: none;">
+			<ion-item lines="none">
+				<ion-range min="-200" max="200" color="secondary">
+					<ion-icon size="small" slot="start" name="volume-off-sharp"></ion-icon>
+					<ion-icon slot="end" name="volume-high-sharp"></ion-icon>
+				</ion-range>
+			</ion-item>
+		</div>		
+    </div>
+</div>
+</ion-content>

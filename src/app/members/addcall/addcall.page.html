@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Add  Call</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<div class="call-mdl-sec">
+<div class="call-cntr">
+<div form-group>
+ <ion-label>Name</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+  <ion-select [interfaceOptions]="customAlertOptions" interface="alert"  placeholder="Select User">
+    <ion-select-option>John Smith</ion-select-option>
+    <ion-select-option>David Smith</ion-select-option>
+    <ion-select-option>Steve Smith</ion-select-option>
+    <ion-select-option>Johnson Charles</ion-select-option>
+  </ion-select>
+</ion-item>
+</div> 
+<div form-group>
+ <ion-label>Date</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="calendar-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="D MMM YYYY " placeholder="D MM YYYY"></ion-datetime>
+</ion-item>
+</div> 
+<div form-group> 
+ <ion-label>Time</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="time-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="HH:mm" placeholder="HH:MM"></ion-datetime>
+</ion-item>
+</div>  
+<ion-button  expand="full" shape="round">Add Call</ion-button>
+
+</div>  
+</div>  
+</ion-content>

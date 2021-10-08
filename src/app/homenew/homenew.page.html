@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Home</ion-title>
+
+    <ion-button slot="end" (click)='notify()'>
+	   <ion-icon name="notifications-outline"></ion-icon>
+    </ion-button>
+
+ 	<ion-button slot="end" (click)='logout()'>
+	   <ion-icon name="log-out"></ion-icon>
+    </ion-button>	
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<div providerprofile>
+    <div tody-list style="overflow-y: scroll; margin: 0;margin-bottom: 40px;">
+	 <div mn-head>
+		<h2 heading>{{username}}</h2>
+
+	</div> 
+	<div list-head>
+		<!-- <h2 heading>Scheduled Call List</h2>
+			<ion-button class="login-btn"  color="primary" shape="round" slot="end">
+				<ion-icon class="icn-circle" name="person-outline"></ion-icon> 
+				<span>View Contacts</span>
+			</ion-button> -->
+
+	    <ion-segment [(ngModel)]="category" color="primary" >
+	      <ion-segment-button value="official">
+	        Scheduled Calls
+	      </ion-segment-button>
+	      <ion-segment-button value="personal">
+	        Contacts
+	      </ion-segment-button>
+	    </ion-segment>
+	</div> 
+	<div [ngSwitch]="category">
+		<ng-container *ngSwitchCase="'official'">
+			<div list-ul *ngFor="let call of calls" >
+				<span><ion-icon name="person-sharp"></ion-icon></span>
+				<div pad-left style="width:55%;">
+					<h2>{{call?.contactName}}</h2>
+					<p>
+						{{call?.callDate | date: 'dd/MM/yyyy' }} {{call?.callTime | date: 'H:mm' }}
+					</p>
+				</div>
+				<div pad-left style="float:right;width: 25%;">
+					<a (click)="deleteCall(call?.id)" style="color: #fff;background: red;border-radius: 100%;padding: 3px 6px;font-size: 15px;float: right;">	X
+					</a>
+				</div>
+			</div>
+
+			<div list-ul *ngIf="calls?.length == 0" style="font-size: 13px;
+    padding: 13px 17px;">
+				No scheduled call yet!
+			</div>
+		</ng-container>
+		<ng-container *ngSwitchCase="'personal'">
+			<div list-ul *ngFor="let cont of contacts" >
+				<span><ion-icon name="person-sharp"></ion-icon></span>
+				<div pad-left style="width:55%;">
+					<h2>{{cont?.name}}</h2>
+				</div>
+				<div pad-left style="float:right;width: 25%;">
+					<a (click)="deleteContact(cont?._id)" style="color: #fff;background: red;border-radius: 100%;padding: 3px 6px;font-size: 15px;float: right;">	X
+					</a>
+				</div>
+			</div>
+			<div list-ul *ngIf="contacts?.length == 0" style="font-size: 13px;
+    padding: 13px 17px;">
+				No contact added yet!
+			</div>
+		</ng-container>
+	</div>
+		<!-- <div list-ul>
+			<span><ion-icon name="person-sharp"></ion-icon></span>
+			<div pad-left>
+			<h2>John Smith</h2>
+			<p>4:00 PM</p>
+			</div>
+		</div>
+		<div list-ul>
+			<span><ion-icon name="person-sharp"></ion-icon></span>
+			<div pad-left>
+			<h2>John Smith</h2>
+			<p>4:00 PM</p>
+			</div>
+		</div> -->
+    </div>
+	<ion-row class="margin-top40 fix-tabs">
+		<ion-col size="6"pd-r-0>
+			<ion-button class="login-btn" color="primary" shape="round" expand="full" (click)="addCall(0)" >
+				<ion-icon class="icn-circle" name="call-outline"></ion-icon> <span>Add Call</span>
+			</ion-button>		
+		</ion-col>
+
+		<ion-col size="6" pd-l-0>
+			<ion-button class="login-btn" color="primary" shape="round" expand="full" (click)="addUser()">
+				<ion-icon class="icn-circle" name="person-outline"></ion-icon> <span>Add Contact</span>
+			</ion-button>		
+		</ion-col>
+	</ion-row>
+</div>
+</ion-content>
+

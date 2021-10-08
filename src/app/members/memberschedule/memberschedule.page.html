@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <!--ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/home2">
+	   </ion-back-button>
+    </ion-buttons-->
+    <ion-title>Schedule</ion-title>
+	
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+<div calendar> 
+<div calendar-head>
+	<ion-buttons (click)="slidePrev() " slot="start">
+	<ion-icon name="chevron-back-outline"></ion-icon>
+	</ion-buttons>
+	 <h2>{{viewTitle}} </h2>
+	 <ion-buttons (click)="slideNext() " slot="end">
+	<ion-icon name="chevron-forward-outline"></ion-icon>
+	</ion-buttons>
+	</div>
+   <calendar [eventSource]="eventSource"
+       [calendarMode]="calendar.mode"
+       [currentDate]="calendar.currentDate"   
+       (onTitleChanged)="onViewTitleChanged($event)" 
+       step="30">
+   </calendar>
+	</div>
+
+<ion-button expand="full" shape="round">
+	  Submit
+	</ion-button>
+</ion-content>

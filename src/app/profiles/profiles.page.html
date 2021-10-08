@@ -1,0 +1,233 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <!--ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/home2">
+	   </ion-back-button>
+    </ion-buttons-->
+    <ion-title>Profiles</ion-title>
+	 <ion-button  (click)="presentModal2()" mar-10 slot="end" color="secondary"  shape="round"  size="small" fill="outline">
+	   <ion-icon name="add"></ion-icon>
+	   New
+    </ion-button>
+  </ion-toolbar>
+    <!-- <div class="search">
+  		<ion-searchbar placeholder="Search..."></ion-searchbar>
+  	</div> -->
+</ion-header>
+<ion-content class="ion-padding">
+   	<ion-row  profiletop>
+   		<ion-col  size="6">
+		   	<!-- <ion-item  lines="none">
+		     	<ion-label>Order By   
+		     	</ion-label>   
+			 	<ion-select>
+				 	<ion-select-option>
+						Room No1
+				 	</ion-select-option>
+				  	<ion-select-option>
+						Room No2
+				 	</ion-select-option>
+			 	</ion-select>
+		   	</ion-item> -->
+   		</ion-col>
+     <ion-col  size="6">
+	 <div listgrid class="ion-text-right">
+	  <a href="javascript:void(0)"  (click)="selectedItem = 'item2'" [ngClass]="{'active': selectedItem === 'item2'}" class="listicon"><ion-icon name="list-outline"></ion-icon></a>
+	  <a href="javascript:void(0)" (click)="selectedItem = 'item1'" [ngClass]="{'active': selectedItem === 'item1'}" class="gridicon"><ion-icon name="grid-outline"></ion-icon></a>
+	 </div>
+   </ion-col>
+   </ion-row>
+   <ion-row  Gridlist  [ngClass]="{'gridview': selectedItem === 'item1'}" style="display:none">
+		<ion-col size="6" *ngFor="let profile of profiles;">
+			<ion-card  no-margin (click)='viewProfilePage(profile)'>
+				<ion-card-header>
+					<img src="assets/img/profile1.jpg" *ngIf="!profile?.image"/>
+					<img src="{{imageUrl}}{{profile?.image}}" *ngIf="profile?.image"/>
+					
+				</ion-card-header>
+
+				<ion-card-content>
+					<h2 >{{profile?.name}}</h2>
+					<p>Room No {{profile?.room}}</p>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+     <!-- <ion-col size="6">
+	   <ion-card  no-margin>
+  <ion-card-header>
+ <img src="assets/img/profile2.jpg"/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2 routerLink="/viewprofile">John Doe</h2>
+    <p>Room No11</p>
+  </ion-card-content>
+	   </ion-card>
+     </ion-col>
+     <ion-col size="6">
+	   <ion-card  no-margin>
+  <ion-card-header>
+ <img src="assets/img/profile3.jpg"/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2 routerLink="/viewprofile">John Doe</h2>
+    <p>Room No12</p>
+  </ion-card-content>
+	   </ion-card>
+     </ion-col>
+     <ion-col size="6">
+	   <ion-card  no-margin>
+  <ion-card-header>
+ <img src="assets/img/profile4.jpg"/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2 routerLink="/viewprofile">John Doe</h2>
+    <p>Room No13</p>
+  </ion-card-content>
+	   </ion-card>
+     </ion-col>
+     <ion-col size="6">
+	   <ion-card  no-margin>
+  <ion-card-header>
+ <img src="assets/img/profile1.jpg"/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2 routerLink="/viewprofile">John Doe</h2>
+    <p>Room No14</p>
+  </ion-card-content>
+	   </ion-card>
+     </ion-col>
+     <ion-col size="6">
+	   <ion-card  no-margin>
+  <ion-card-header>
+ <img src="assets/img/profile2.jpg"/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2 routerLink="/viewprofile">John Doe</h2>
+    <p>Room No15</p>
+  </ion-card-content>
+	   </ion-card>
+     </ion-col> -->
+   
+   </ion-row>
+   
+    <div alllist   [ngClass]="{'listview': selectedItem === 'item2'}" style="display:none">
+     
+	   	<ion-item lines="none" *ngFor="let profile of profiles;">
+	     	<ion-avatar>
+		   		<img src="assets/img/profile1.jpg" *ngIf="!profile?.image"/>
+				<img src="{{imageUrl}}{{profile?.image}}" *ngIf="profile?.image"/>
+     		</ion-avatar>
+		 	<ion-label>
+			 	<h2>{{profile?.name}}</h2>
+			 	<p>Room No {{profile?.room}}</p>
+			 	<div class="cldr-sec">
+			     	<p>{{profile?.dob | date}}</p>
+			 	</div>
+		 	</ion-label>
+		 	<div class="view-sec" slot="end">
+			 	<ion-button (click)="presentModal(profile._id)" expand="full" shape="round">
+			 		<ion-icon name="add-outline"></ion-icon>
+			 	</ion-button>
+			 	<ion-button (click)='viewProfilePage(profile)' expand="full" shape="round">
+			 		<ion-icon name="eye-outline"></ion-icon>
+			 	</ion-button>
+		 	</div>
+	   </ion-item>  
+
+	   <!-- <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile2.jpg"/>
+	     </ion-avatar>
+		 <ion-label>
+		 <h2>John Smith</h2>
+		 <p>Room No 12</p>
+		 <div class="cldr-sec">
+		     <p>22-02-2020,01:39</p>
+			 
+		 </div>
+		 </ion-label>
+		 <div class="view-sec" slot="end">
+		 <ion-button (click)="presentModal()"  expand="full" shape="round"><ion-icon name="add-outline"></ion-icon></ion-button>
+		 <ion-button routerLink="/viewprofile" expand="full" shape="round"><ion-icon name="eye-outline"></ion-icon></ion-button>
+		 </div>
+	   </ion-item>      
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile3.jpg"/>
+	     </ion-avatar>
+		 <ion-label>
+		 <h2>John Smith</h2>
+		 <p>Room No 12</p>
+		 <div class="cldr-sec">
+		     <p>22-02-2020,01:39</p>
+			 
+		 </div>
+		 </ion-label>
+		 <div class="view-sec" slot="end">
+		 <ion-button (click)="presentModal()"  expand="full" shape="round"><ion-icon name="add-outline"></ion-icon></ion-button>
+		 <ion-button routerLink="/viewprofile" expand="full" shape="round"><ion-icon name="eye-outline"></ion-icon></ion-button>
+		 </div>
+	   </ion-item>      
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile4.jpg"/>
+	     </ion-avatar>
+		 <ion-label>
+		 <h2>John Smith</h2>
+		 <p>Room No 12</p>
+		 <div class="cldr-sec">
+		     <p>22-02-2020,01:39</p>
+			 
+		 </div>
+		 </ion-label>
+		 <div class="view-sec" slot="end">
+		 <ion-button (click)="presentModal()"  expand="full" shape="round"><ion-icon name="add-outline"></ion-icon></ion-button>
+		 <ion-button routerLink="/viewprofile" expand="full" shape="round"><ion-icon name="eye-outline"></ion-icon></ion-button>
+		 </div>
+	   </ion-item>       
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile1.jpg"/>
+	     </ion-avatar>
+		 <ion-label>
+		 <h2>John Smith</h2>
+		 <p>Room No 12</p>
+		 <div class="cldr-sec">
+		     <p>22-02-2020,01:39</p>
+			 
+		 </div>
+		 </ion-label>
+		 <div class="view-sec" slot="end">
+		 <ion-button (click)="presentModal()"  expand="full" shape="round"><ion-icon name="add-outline"></ion-icon></ion-button>
+		 <ion-button routerLink="/viewprofile" expand="full" shape="round"><ion-icon name="eye-outline"></ion-icon></ion-button>
+		 </div>
+	   </ion-item>       
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile2.jpg"/>
+	     </ion-avatar>
+		 <ion-label>
+		 <h2>John Smith</h2>
+		 <p>Room No 12</p>
+		 <div class="cldr-sec">
+		     <p>22-02-2020,01:39</p>
+			 
+		 </div>
+		 </ion-label>
+		 <div class="view-sec" slot="end">
+		 <ion-button (click)="presentModal()"  expand="full" shape="round"><ion-icon name="add-outline"></ion-icon></ion-button>
+		 <ion-button routerLink="/viewprofile" expand="full" shape="round"><ion-icon name="eye-outline"></ion-icon></ion-button>
+		 </div>
+	   </ion-item>  -->
+	</div>
+
+	<div>
+	   	<span *ngIf="profiles?.length == 0" style="padding: 14px 19px;
+    border: 1px solid #b7d6f0;width: 100%;display: block;">No proflie added yet!</span>
+	</div>
+</ion-content>

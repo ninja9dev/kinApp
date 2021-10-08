@@ -1,0 +1,49 @@
+<!-- <ion-header> -->
+  <!-- <ion-toolbar> -->
+    <!-- <ion-title>login</ion-title> -->
+  <!-- </ion-toolbar> -->
+<!-- </ion-header> -->
+<ion-content color="primary" class="cont-img-bg">
+  <div class="home-logo">
+		<div class="animatin">
+	    <span><img src="assets/img/kin-logo.png" alt=""></span>
+		</div>
+	</div>
+  
+  <div class="login">
+    <div class="log-sign-sec">
+        <a class="active" href="javascript:void(0)">Login</a>
+        <a routerLink="/signup" href="javascript:void(0)">Signup</a>
+    </div>
+    <div form-group>
+     <ion-label>Email</ion-label>
+     <ion-item lines="none"  >
+      <ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+      <ion-input type="email"  placeholder="Enter Email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    </div>
+
+    <div form-group  m-b-0>
+    <ion-label>Password</ion-label>
+     <ion-item lines="none">
+      <ion-label><ion-icon name="lock-closed-outline"></ion-icon></ion-label>
+      <ion-input type="password"  placeholder="Enter Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    </div>
+    
+    <div class="ion-fr-gt">
+       <a routerLink="/forgotpassword" href="javascript:void(0)" >Forgot Your Password ?</a>
+    </div>
+    <ion-button  expand="full" shape="round" (click)="login(email, password)">Login</ion-button>
+    
+    <div class="social-btn" style="visibility: hidden;">
+    			<ion-button class="login-btn" color="secondary" shape="round" expand="full" (click)="doLogin()">
+    				<ion-icon class="icn-circle facebook-clr fa fa-facebook"></ion-icon>
+            <span>Login With Facebook</span>
+    			</ion-button>	
+    			<ion-button class="login-btn" color="secondary" shape="round" expand="full" (click)="loginGoogle()">
+    				<ion-icon class="icn-circle google-clr fa fa fa-google"></ion-icon> <span>Login With Google</span>
+    			</ion-button>
+    </div>
+  </div>
+</ion-content>

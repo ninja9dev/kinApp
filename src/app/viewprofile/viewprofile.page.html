@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/tabs/profiles">
+	   </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{clickedProfile?.name}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div profileinfo>
+<div profileimg>
+  <img src="assets/img/proifle-bg.jpg"/>
+</div>
+<div userimg>
+
+<img src="assets/img/profile1.jpg" *ngIf="!profiles?.image"/>
+<img src="{{imageUrl}}{{profiles?.image}}" *ngIf="profiles?.image"/>
+<p radius>DOB: {{profiles?.dob | date}}</p>
+<p radius>Room: {{profiles?.room}}</p>
+</div>
+</div>
+<div providerprofile>
+	<!-- <div formgroup>	
+	<ion-label>Note</ion-label>   
+	<ion-item lines="none">
+	  <ion-textarea rows="5" placeholder="Type Here..."></ion-textarea>
+	</ion-item>	
+	</div> --> 
+    <div tody-list>
+	<div list-head>
+		<h2 heading>Scheduled Calls</h2>
+			<!-- <ion-button class="login-btn" color="primary" shape="round" slot="end">
+				<ion-icon class="icn-circle" name="videocam-outline"></ion-icon> <span>Open</span>
+			</ion-button> -->
+		</div>
+		<!-- <div list-ul>
+			<span><ion-icon name="person-sharp"></ion-icon></span>
+			<div pad-left>
+				<h2>John Smith</h2>
+				<p>Today, 4:00 PM</p>
+			</div>
+		</div> -->
+
+		<div list-ul *ngFor="let call of callsAll">
+			<span><ion-icon name="person-sharp"></ion-icon></span>
+			<div pad-left style="width:55%;">
+				<h2>{{call?.contactName}}</h2>
+				<p>
+					{{call?.callDate | date: 'dd/MM/yyyy' }} {{call?.callTime | date: 'H:mm' }}
+				</p>
+			</div>
+			<div pad-left style="float:right;width: 25%;">
+				<a (click)="calling(call)">
+		        	<ion-icon name="call" style='margin:2px 9px 0px 4px;'></ion-icon>
+			    </a>
+
+				<a (click)="deleteCall(call?.id)" style="color: #fff;background: red;border-radius: 100%;padding: 3px 6px;font-size: 15px;float: right;">	X
+				</a>
+			</div>
+		</div>
+
+
+    </div> 
+    <div tody-list>
+	<div list-head>
+		<h2 heading>Call History</h2>
+			<!-- <ion-button class="login-btn"  color="primary" shape="round" slot="end">
+				<ion-icon class="icn-circle" name="call-outline"></ion-icon> <span>View Call History</span>
+			</ion-button> -->
+		</div>
+		<!-- <div list-ul>
+			<span><ion-icon name="person-sharp"></ion-icon></span>
+			<div pad-left>
+				<h2>John Smith</h2>
+				<p>Yestarday, 4:00 PM</p>
+				</div>
+		</div> -->
+
+		<div list-ul>
+			<div pad-left>
+				<h2>No call history yet !</h2>
+			</div>
+		</div>
+    </div>
+	  	<div tody-list>
+			<div list-head>
+				<h2 heading>Contacts</h2>
+				<!-- <ion-button class="login-btn"  color="primary" shape="round" slot="end">
+					<ion-icon class="icn-circle" name="call-outline"></ion-icon> <span>View All</span>
+				</ion-button> -->
+			</div>
+
+			<!-- <div list-ul *ngFor="let contact of contacts">
+				<span><ion-icon name="person-sharp"></ion-icon></span>
+				<div pad-left>
+				<h2>{{contact?.name}}</h2>
+				</div>
+			</div> -->
+
+			<div list-ul *ngFor="let cont of contacts" >
+				<span><ion-icon name="person-sharp"></ion-icon></span>
+				<div pad-left style="width:55%;">
+					<h2>{{cont?.name}}</h2>
+				</div>
+				<div pad-left style="float:right;width: 25%;">
+					<a (click)="deleteContact(cont?._id)" style="color: #fff;background: red;border-radius: 100%;padding: 3px 6px;font-size: 15px;float: right;">	X
+					</a>
+				</div>
+			</div>
+			<div list-ul *ngIf="contacts?.length == 0" >
+				No any contact yet
+			</div>
+    	</div>
+		<ion-row class="margin-top40">
+			<ion-col size="6" pd-l-0>
+				<ion-button (click)="presentModal2()" class="login-btn" color="primary" shape="round" expand="full">
+					<ion-icon class="icn-circle fa fa-phone"></ion-icon> <span>Add Contact</span>
+				</ion-button>		
+			</ion-col>
+			<ion-col size="6"pd-r-0 style="float: right;">
+				<ion-button (click)="presentModal(profiles._id)" class="login-btn" color="primary" shape="round" expand="full">
+					<ion-icon class="icn-circle" name="call-outline"></ion-icon> <span>New Call</span>
+				</ion-button>		
+			</ion-col>
+		</ion-row>
+	</div>
+</ion-content>
+

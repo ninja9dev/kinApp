@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Add Profile</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<div class="call-mdl-sec">
+<div class="call-cntr">
+<div form-group>
+ <ion-avatar>
+
+    <img src="assets/img/user-dummy.jpg" class="usr-imga" *ngIf="image == ''">
+
+    <img src="{{imagePath(image)}}" class="usr-imga" *ngIf="image != ''">
+
+    <label for="user-img" (click)="openImagePicker()"><ion-icon name="add-circle-sharp"></ion-icon></label>
+    <!--  <input style="display:none" type="file" name="user-img" id="user-img" [(ngModel)]="image"/> -->
+ </ion-avatar>
+</div> 
+<form [formGroup]="signupForm" >
+<div form-group>
+ <ion-label>Name</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+  <ion-input type="text" placeholder="Enter Name" formControlName="name"></ion-input>
+</ion-item>
+</div> 
+<div form-group>
+ <ion-label>Room No</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="person-outline"></ion-icon></ion-label>
+  <ion-input type="tel" placeholder="Enter Room No" formControlName="room"></ion-input>
+</ion-item>
+</div> 
+<div form-group>
+ <ion-label>DOB</ion-label>
+ <ion-item lines="none">
+  <ion-label><ion-icon name="calendar-outline"></ion-icon></ion-label>
+  <ion-datetime displayFormat="D MMM YYYY " placeholder="DD MM YYYY" formControlName="dob"></ion-datetime>
+</ion-item>
+</div> 
+ 
+<ion-button  expand="full" shape="round" (click)="saveProfile()">Submit</ion-button>
+</form>
+</div>  
+</div>  
+</ion-content>

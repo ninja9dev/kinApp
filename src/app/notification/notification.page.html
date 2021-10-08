@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-buttons  slot="start">
+     <ion-back-button  defaultHref="/tabs/homenew">
+     </ion-back-button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content bg-grey>
+  <ion-list list-all-psres *ngIf="data?.length == 0">
+        <!-- <h5 class="news-str"><span> Newer </span> </h5> -->
+    <ion-item lines="none">
+          
+      <p>No notification yet!!</p>
+    
+    </ion-item>
+  </ion-list>
+	<ion-list list-all-psres *ngIf="data?.length > 0">
+    <!-- <h5 class="news-str" *ngIf="newest?.length > 0"><span> Newer </span> </h5> -->
+    <ng-container *ngFor="let item of data; let i = index;">
+		<ion-item lines="none" class="unread" *ngIf="item?.senderId != userId" (click)="openChatPage(item)">
+          <ion-avatar slot="start">
+            <img src="assets/img/profile1.jpg" *ngIf="item?.sender_image == null">
+            <img src="{{baseUrl}}{{item?.sender_image}}" *ngIf="item?.sender_image != null">
+
+          </ion-avatar>
+          <ion-label>
+            <h2>{{item?.sender_name}} <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> {{item?.created_on | timeAgo}} </span></h2>
+            <p *ngIf="item?.noti_type == 'call'"><label>{{item?.sender_name}} </label> have scheduled a call with you at <b> {{item?.data?.callDate | date: 'short'}}</b></p>
+
+            <p *ngIf="item?.noti_type == 'like'"> <label>{{item?.sender_name}}  likes your post</label></p>
+
+            <p *ngIf="item?.noti_type == 'comment'"><label>{{item?.sender_name}} commented on your post.</label></p>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+		<!-- <ion-item lines="none" class="unread">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user1.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Hanry Christ <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 20 mints ago </span></h2>
+            <p>Sed ut perspiciatis unde omnis iste...</p>
+          </ion-label>
+        </ion-item> -->
+		<h5 class="news-str mstr" *ngIf="oldest?.length > 0"><span> Older </span> </h5>
+    <ng-container *ngFor="let item of oldest; let i = index;">
+		<ion-item lines="none" *ngIf="item?.senderId != userId" (click)="openChatPage(item)">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user.jpg" *ngIf="item?.sender_image == null">
+            <img src="{{baseUrl}}{{item?.sender_image}}" *ngIf="item?.sender_image != null">
+
+          </ion-avatar>
+          <ion-label>
+            <h2>{{item?.sender_name}} <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> {{item?.created_on | timeAgo}} </span></h2>
+            <p *ngIf="item?.noti_type == 'chat'">You receive a message from <label>{{item?.sender_name}}</label></p>
+
+            <p *ngIf="item?.noti_type == 'like'"> <label>{{item?.sender_name}}  likes your post</label></p>
+
+            <p *ngIf="item?.noti_type == 'comment'"><label>{{item?.sender_name}} commented on your post.</label></p>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+
+
+		<!-- <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user3.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Jenny Thomas <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 1 hour ago </span></h2>
+            <p>Itaque earum rerum hic tenetur...</p>
+          </ion-label>
+        </ion-item>
+		<ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user4.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Lilly James <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 3 hours ago </span></h2>
+            <p>Lorem ipsum dolor sit amet consect...</p>
+          </ion-label>
+        </ion-item>
+		<ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user5.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Christon Ronaldo <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 5 hours ago </span></h2>
+            <p>Ut enim ad minima veniam quis...</p>
+          </ion-label>
+        </ion-item>
+		<ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user1.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Hanry Christ <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 7 hours ago </span></h2>
+            <p>Et harum quidem rerum facilis est...</p>
+          </ion-label>
+        </ion-item>
+		<ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user2.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Denniel James <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 1 day ago </span></h2>
+            <p>Quis autem vel eum iure reprehenderit...</p>
+          </ion-label>
+        </ion-item>
+		<ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/user3.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Jenny Thomas <span class="right-timt"> <ion-icon name="time-outline"></ion-icon> 3 days ago </span></h2>
+            <p>Itaque earum rerum hic tenetur...</p>
+          </ion-label>
+        </ion-item> -->
+	</ion-list>
+</ion-content>

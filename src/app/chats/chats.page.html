@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Chats</ion-title>
+    <ion-button slot="end" (click)='chat()'>
+	   <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-padding">
+
+    <div alllist >
+     	<ng-container *ngFor="let item of listing;">
+		   <ion-item (click)='openChatPage(item)' lines="none" *ngIf="item?.senderId == userId && item?.receiverId != userId">
+		     	<ion-avatar>
+			   		<img src="assets/img/user-dummy.jpg" *ngIf="item?.receiver?.image ==null"/>
+			   		<img src="http://35.153.16.86:3000/images/{{item?.receiver?.image}}" *ngIf="item?.receiver?.image !=null"/>
+
+		     	</ion-avatar>
+			 	<ion-label>
+			 		<h2>{{item?.receiver?.firstname}} {{item?.receiver?.lastname}}</h2>
+			 		<!-- <p>{{item?.callDate | date}} at {{item?.callTime | date: 'H:mm' }}</p> -->
+			 		
+			 		<countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+
+			 		
+			 		<!-- <p id="demo" style="color:green;text-align:right;font-size:15px;"></p>
+
+				  	<div class="wrapper">
+					    <div class="pie spinner"></div>
+					    <div class="pie filler"></div>
+					    <div class="mask"></div>
+				  	</div> -->
+
+			 	</ion-label>
+			 	<div class="view-sec" slot="end">
+			 		<ion-badge color="primary">
+			 			
+			 		</ion-badge>
+			 	</div>
+		   	</ion-item>
+
+		   	<ion-item (click)='openChatPage(item)' lines="none" *ngIf="item?.senderId != userId && item?.receiverId == userId">
+		     	<ion-avatar>
+			   		<img src="assets/img/user-dummy.jpg" *ngIf="item?.sender?.image ==null"/>
+			   		<img src="http://35.153.16.86:3000/images/{{item?.sender?.image}}" *ngIf="item?.sender?.image !=null"/>
+
+		     	</ion-avatar>
+			 	<ion-label>
+			 		<h2>{{item?.sender?.firstname}} {{item?.sender?.lastname}}</h2>
+			 		<!-- <p>{{item?.callDate | date}} at {{item?.callTime | date: 'H:mm' }}</p> -->
+			 		
+			 		<countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+
+			 		
+			 		<!-- <p id="demo" style="color:green;text-align:right;font-size:15px;"></p>
+
+				  	<div class="wrapper">
+					    <div class="pie spinner"></div>
+					    <div class="pie filler"></div>
+					    <div class="mask"></div>
+				  	</div> -->
+
+			 	</ion-label>
+			 	<div class="view-sec" slot="end">
+			 		<ion-badge color="primary">
+			 			
+			 		</ion-badge>
+			 	</div>
+		   	</ion-item>
+		   </ng-container>
+	   	<div *ngIf="listing?.length == 0">No chat initialized yet!</div>
+	</div>
+</ion-content>
+

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/tabs/chats">
+	   </ion-back-button>
+    </ion-buttons>
+    <!-- {{user}} -->
+    <ion-buttons slot="end">
+      <span  *ngIf="!startVideo">
+        <ion-icon (click)="call()" name="call" style='margin:2px 9px 0px 4px;'></ion-icon>
+      </span>
+
+    </ion-buttons>
+
+  	<ion-item  color="primary" lines="none">
+      <ion-avatar>
+        <img src="assets/img/profile1.jpg" *ngIf="receiver?.image == null"/>
+        <span></span>
+      </ion-avatar>
+    	<ion-label>
+        <h2>{{user}}</h2>
+    	</ion-label>
+  	</ion-item>	
+  </ion-toolbar>
+<div id="errorMsg"></div>
+</ion-header>
+<ion-content bg-light-grey>
+  <ng-container *ngIf="!startVideo">
+  <ng-container *ngFor="let msg of chat" >
+    <div lines="none" mesge-left *ngIf="msg?.senderId != userId">
+       <ion-avatar slot="start">
+        <img src="assets/img/user-dummy.jpg" *ngIf="receiver?.image == null">
+        <img src="http://35.153.16.86:3000/images/{{receiver?.image}}" *ngIf="receiver?.image != null">
+      </ion-avatar>
+      <p>
+        {{msg?.text}}
+        <!-- <span>{{msg?.created_on | timeAgo}}</span> -->
+      </p>
+      
+
+    </div>
+    <div lines="none" mesge-right *ngIf="msg?.senderId == userId">
+      <p>
+        {{msg?.text}}
+        <!-- <span>{{msg?.created_on | timeAgo}}</span> -->
+      </p>
+      
+    </div>
+    <!-- <div class="date-time">
+      <p>Monday, 10:00 AM</p>
+    </div> -->
+  </ng-container>
+  </ng-container>
+<!-- <div lines="none" mesge-right>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+  <ion-avatar slot="end">
+    <img src="assets/img/profile2.jpg">
+  </ion-avatar>  
+</div>
+<div lines="none" mesge-left>
+  <ion-avatar slot="start">
+    <img src="assets/img/profile1.jpg">
+  </ion-avatar>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+</div> -->
+
+<!-- <video id="partner-video" (click)="swapVideo('my-video')" autoplay playsinline
+  [ngClass]="{'top-video': topVideoFrame === 'partner-video', 'main-video': topVideoFrame != 'partner-video'}">
+</video>
+<video id="my-video" (click)="swapVideo('partner-video')" autoplay playsinline
+  [ngClass]="{'top-video': topVideoFrame === 'my-video', 'main-video': topVideoFrame != 'my-video'}" >
+</video> -->
+
+<video id="partner-video" (click)="swapVideo('my-video')" autoplay playsinline
+  [ngClass]="{'top-video': topVideoFrame === 'partner-video', 'main-video': topVideoFrame != 'partner-video'}" *ngIf="startVideo">
+</video>
+<video id="my-video" (click)="swapVideo('partner-video')" autoplay playsinline
+  [ngClass]="{'top-video': topVideoFrame === 'my-video', 'main-video': topVideoFrame != 'my-video'}" *ngIf="startVideo">
+</video>
+<ion-icon name="call" (click)='disconnect()' style='background: red;color: #fff;padding: 15px 15px;border-radius: 100%;position: absolute;bottom: 0;margin: 0 0 23px 39%;transform: rotate(133deg);' *ngIf="startVideo"></ion-icon>
+<!-- 
+<ion-button >Call To: </ion-button>
+<ion-item>
+  <ion-input type="text" [(ngModel)]="partnerId" placeholder="your partner nick name"></ion-input>
+</ion-item> -->
+</ion-content>
+
+<ion-footer *ngIf="!startVideo">
+<ion-item  lines="none">
+<ion-input placeholder="Type a message" id='textMsg' [(ngModel)]="text"></ion-input>
+<ion-button (click)="sendMessage(text)">
+  <ion-icon name="send" ></ion-icon>
+</ion-button>
+</ion-item>
+</ion-footer>
